@@ -1,2 +1,6 @@
 #!/bin/sh
-echo "--- {}"
+cat <<EOF
+---
+config_vars:
+  PATH: "/app/bin:/usr/bin:/bin"
+EOF
