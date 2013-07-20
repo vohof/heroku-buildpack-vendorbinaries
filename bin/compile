@@ -30,7 +30,7 @@ PORT=$1
 # Generate config files:
 sed -e "s/herokuport/$PORT/g" conf/nginx.sh > /app/conf/nginx.conf
 
-cat /app/conf/nginx.confww
+cat /app/conf/nginx.conf
 
 # Start nginx:
 sbin/nginx -c /app/conf/nginx.conf
