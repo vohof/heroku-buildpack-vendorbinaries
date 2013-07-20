@@ -25,15 +25,13 @@ done < .vendor_urls
 cat >bin/nginx<<EOF
 #!/bin/bash
 
-
 # Generate config files:
-sed -e "s/herokuport/$PORT/g" conf/nginx.sh > conf/nginx.conf
+sed -e "s/herokuport/$PORT/g" conf/nginx.sh > /app/conf/nginx.conf
+
+cat /app/conf/nginx.conf
 
 # Start nginx:
 sbin/nginx -c /app/conf/nginx.conf
 EOF
-
-echo '---> conf/nginx.conf'
-cat conf/nginx.conf | indent
 
 chmod +x bin/nginx
