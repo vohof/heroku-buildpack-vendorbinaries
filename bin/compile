@@ -21,3 +21,23 @@ while read url; do
     curl -L --silent $url | tar xz
   fi
 done < .vendor_urls
+
+cat >bin/nginx<<EOF
+#!/bin/bash
+
+
+# Generate config files:
+erb conf/nginx.conf.erb > conf/nginx.conf
+
+
+# Initilaize logs:
+mkdir -p logs
+
+# Open logs:
+(tail -f -n 0 logs/*.log &)
+
+# Start nginx:
+sbin/nginx
+EOF
+
+chmod +x bin/nginx
