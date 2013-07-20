@@ -29,15 +29,8 @@ cat >bin/nginx<<EOF
 # Generate config files:
 sed -e "s/herokuport/$PORT/g" conf/nginx.sh > conf/nginx.conf
 
-
-# Initilaize logs:
-mkdir -p logs
-
-# Open logs:
-(tail -f -n 0 logs/*.log &)
-
 # Start nginx:
-sbin/nginx
+sbin/nginx -c /app/conf/nginx.conf
 EOF
 
 chmod +x bin/nginx
