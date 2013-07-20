@@ -27,7 +27,7 @@ cat >bin/nginx<<EOF
 
 
 # Generate config files:
-erb conf/nginx.conf.erb > conf/nginx.conf
+sed -e "s/herokuport/$PORT/g" conf/nginx.sh > conf/nginx.conf
 
 
 # Initilaize logs:
