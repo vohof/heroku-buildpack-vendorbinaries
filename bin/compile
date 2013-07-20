@@ -33,4 +33,7 @@ sed -e "s/herokuport/$PORT/g" conf/nginx.sh > conf/nginx.conf
 sbin/nginx -c /app/conf/nginx.conf
 EOF
 
+echo '---> conf/nginx.conf'
+cat conf/nginx.conf | indent
+
 chmod +x bin/nginx
